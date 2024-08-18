@@ -22,6 +22,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      # Install Node as this is needed for PostCSS
+      - uses: ctions/setup-node@main
+
+      # Install PostCSS plugins (from `package.json`)
+      - run: npm install
+            
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@master
         with:
@@ -36,4 +42,3 @@ jobs:
           bundler_ver: '~>2.4.0'         # Default is latest bundler version
           cname: ''                  # Default is to not use a cname
           actor: ''                  # Default is the GITHUB_ACTOR
-          pre_build_commands: 'npm install'
