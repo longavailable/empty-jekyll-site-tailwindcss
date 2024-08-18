@@ -23,7 +23,7 @@ jobs:
             ${{ runner.os }}-gems-
 
       # Install Node as this is needed for PostCSS
-      - uses: ctions/setup-node@main
+      - uses: actions/setup-node@main
 
       # Install PostCSS plugins (from `package.json`)
       - run: npm install
